@@ -6,6 +6,7 @@
 
 import pandas as pd
 from sklearn.metrics import roc_auc_score, accuracy_score
+from sou import data
 
 
 class ColumnNotFoundException(Exception):
@@ -17,7 +18,7 @@ class ColumnNotFoundException(Exception):
         super().__init__(e)
 
 
-ans_df = pd.read_csv('test_label.csv')
+ans_df = pd.DataFrame(data, columns=['user_id', 'merchant_id', 'label_real'])
 
 
 def cal_score(test_df):

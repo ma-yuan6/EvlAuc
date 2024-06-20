@@ -7,20 +7,20 @@
 import pandas as pd
 import streamlit as st
 from utils import cal_score, ColumnNotFoundException
+from sou import instructions, data
 
 
 @st.cache_data
 def convert_df():
-    df = pd.read_csv('test_label.csv')
+    df = pd.DataFrame(data, columns=['user_id', 'merchant_id', 'label_real'])
     del df['label_real']
     return df.to_csv(index=False).encode("utf-8")
 
 
 st.title('天猫用户复购模型评估')
 
-instruction = open('instructions.md', 'r', encoding='utf-8').read()
 with st.expander('食用方法😋'):
-    st.markdown(instruction)
+    st.markdown(instructions)
 
 csv = convert_df()
 st.download_button(
