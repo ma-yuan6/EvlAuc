@@ -21,4 +21,6 @@ pip install -r requirements.txt
 streamlit run app.py
 ~~~
 
+## 预览
 
+![image-20241109232256918](doc/img.png)
